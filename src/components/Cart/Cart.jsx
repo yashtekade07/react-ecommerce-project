@@ -2,10 +2,11 @@
 import { AiFillDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import "./Cart.css";
+import { useNavigate } from "react-router-dom/dist";
 const Cart = () => {
   const { cartItems, subTotal } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const increament = (id) => {
     dispatch({
       type: "addToCart",
@@ -30,6 +31,11 @@ const Cart = () => {
     });
     dispatch({ type: "calculateprice" });
   };
+
+  const navigateHandler = () => {
+    navigate("/checkout");
+  };
+
   return (
     <div className="cart">
       <main>
@@ -53,6 +59,11 @@ const Cart = () => {
       </main>
       <aside>
         <h2>Total :${subTotal}</h2>
+        <div className="mt-3 text-center">
+          <button className="button" onClick={navigateHandler}>
+            Checkout
+          </button>
+        </div>
       </aside>
     </div>
   );

@@ -35,7 +35,7 @@ const options = {
 };
 
 const Header = () => {
-  return <ReactNavbar className = ''{ ...options} />;
+  return <ReactNavbar className="" {...options} />;
 };
 
 export default Header;

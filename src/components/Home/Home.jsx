@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Fragment, useEffect } from "react";
+import { useEffect } from "react";
 import { CgMouse } from "react-icons/cg";
 import "./Home.css";
 import MetaData from "../layout/MetaData.jsx";
@@ -29,7 +29,7 @@ const Home = () => {
   };
 
   return (
-    <Fragment>
+    <div>
       <MetaData title="ECOMMERCE" />
 
       <div className="banner">
@@ -59,10 +59,12 @@ const Home = () => {
       <div
         style={{
           display: "flex",
+          width: "80vmax",
           justifyContent: "space-between",
           alignItems: "center",
+          textAlign: "center",
           overflowX: "auto", // Horizontal scrollbar if content overflows
-          whiteSpace: "nowrap", // Prevent items from wrapping to the next line
+          whiteSpace: "wrap", // Prevent items from wrapping to the next line
           padding: "10px", // Add some padding for spacing
         }}
       >
@@ -80,13 +82,14 @@ const Home = () => {
               transition: "background-color 0.3s ease",
             }}
             key={index}
+            id={index}
             onClick={() => setPage(index + 1)}
           >
             {index + 1}
           </button>
         ))}
       </div>
-    </Fragment>
+    </div>
   );
 };
 

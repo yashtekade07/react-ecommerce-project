@@ -92,23 +92,17 @@ export const cartReducer = createReducer(
   },
 );
 
-export const orderReducer = createReducer({}, (builder) => {
-  //   builder
-  //     .orderRequest((state) => {
-  //       state.loading = true;
-  //     })
-  //     .orderSuccess((state, action) => {
-  //       state.loading = false;
-  //       state.order = action.payload.orders;
-  //     })
-  //     .orderFail((state, action) => {
-  //       state.loading = false;
-  //       state.error = action.payload;
-  //     })
-  //     .clearError((state) => {
-  //       state.error = null;
-  //     })
-  //     .clearMessage((state) => {
-  //       state.message = null;
-  //     });
+export const orderReducer = createReducer({order: [],}, (builder) => {
+    builder
+      .addCase('orderRequest',(state) => {
+        state.loading = true;
+      })
+      .addCase('orderSuccess',(state, action) => {
+        state.loading = false;
+        state.order = action.payload;
+      })
+      .addCase('orderFail',(state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
 });
